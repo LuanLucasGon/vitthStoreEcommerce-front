@@ -1,0 +1,84 @@
+<div class="min-h-screen bg-slate-50 font-sans text-slate-900">
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+        <lucide-angular [img]="Box" class="w-8 h-8"></lucide-angular>
+        {{ title() }}
+      </h1>
+
+      <nav class="hidden md:flex gap-8 font-medium">
+        <a href="#" class="hover:text-blue-600 transition-colors">Products</a>
+        <a href="#" class="hover:text-blue-600 transition-colors">Categories</a>
+        <a href="#" class="hover:text-blue-600 transition-colors">Deals</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="secondary"></p-button>
+        <div class="relative">
+          <p-button [rounded]="true" severity="primary" class="relative">
+            <lucide-angular [img]="ShoppingCart" class="w-5 h-5 mr-2"></lucide-angular>
+            Cart (0)
+          </p-button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-12 mb-12 text-white relative overflow-hidden">
+      <div class="relative z-10 max-w-2xl">
+        <span class="bg-white/20 px-4 py-1 rounded-full text-sm font-semibold mb-6 inline-block backdrop-blur-sm">New Collection 2026</span>
+        <h2 class="text-5xl font-extrabold mb-6 leading-tight">Elevate Your Lifestyle with Our Curated Selection</h2>
+        <p class="text-xl text-blue-50 mb-8">Discover premium products designed for modern life. Free shipping on all orders over $50.</p>
+        <div class="flex gap-4">
+          <p-button label="Shop Now" severity="info" size="large"></p-button>
+          <p-button label="View Deals" severity="secondary" size="large" [outlined]="true" class="bg-white/10"></p-button>
+        </div>
+      </div>
+      <div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none">
+        <lucide-angular [img]="Box" class="w-full h-full"></lucide-angular>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section>
+      <div class="flex items-center justify-between mb-8">
+        <h3 class="text-3xl font-bold">Featured Products</h3>
+        <p-button label="View All" [text]="true" icon="pi pi-arrow-right" iconPos="right"></p-button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (product of featuredProducts(); track product.id) {
+          <p-card class="hover:shadow-xl transition-shadow border-none">
+            <ng-template pTemplate="header">
+              <div class="aspect-square bg-slate-200 rounded-t-xl flex items-center justify-center">
+                 <lucide-angular [img]="Box" class="w-24 h-24 text-slate-400"></lucide-angular>
+              </div>
+            </ng-template>
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between items-center">
+                <h4 class="text-xl font-bold">{{ product.name }}</h4>
+                <span class="text-lg font-semibold text-blue-600">{{ product.price | currency }}</span>
+              </div>
+              <div class="flex items-center gap-1 text-yellow-500">
+                <lucide-angular [img]="Star" class="w-4 h-4 fill-current"></lucide-angular>
+                <span class="text-slate-600 font-medium">{{ product.rating }}</span>
+              </div>
+              <p-button label="Add to Cart" [outlined]="true" class="mt-4 w-full"></p-button>
+            </div>
+          </p-card>
+        }
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t mt-24 py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-slate-500">© 2026 {{ title() }} - Built with Angular 19, Tailwind CSS & PrimeNG</p>
+    </div>
+  </footer>
+</div>
+
+<router-outlet />
