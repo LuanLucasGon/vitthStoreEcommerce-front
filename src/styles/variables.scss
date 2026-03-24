@@ -1,0 +1,141 @@
+// ─────────────────────────────────────────────
+// Design Tokens — VitthStore
+// Tema escuro é o padrão (:root).
+// Tema claro é ativado via [data-theme="light"].
+// ─────────────────────────────────────────────
+
+:root {
+  // ── Cores: Background ──────────────────────
+  --vt-bg-primary:          #09090b; // zinc-950
+  --vt-bg-surface:          #18181b; // zinc-900
+  --vt-bg-elevated:         #27272a; // zinc-800
+  --vt-bg-overlay:          rgba(0, 0, 0, 0.6);
+
+  // ── Cores: Borda ───────────────────────────
+  --vt-border:              #27272a; // zinc-800
+  --vt-border-hover:        #52525b; // zinc-600
+  --vt-border-focus:        #a1a1aa; // zinc-400
+
+  // ── Cores: Texto ───────────────────────────
+  --vt-text-primary:        #fafafa; // zinc-50
+  --vt-text-secondary:      #a1a1aa; // zinc-400
+  --vt-text-muted:          #71717a; // zinc-500
+  --vt-text-disabled:       #3f3f46; // zinc-700
+
+  // ── Cores: Ação / Contraste ─────────────────
+  --vt-action-bg:           #ffffff;
+  --vt-action-fg:           #09090b;
+  --vt-action-bg-hover:     #e4e4e7;
+
+  // ── Cores: Feedback ────────────────────────
+  --vt-color-success:       #34d399; // emerald-400
+  --vt-color-success-muted: #064e3b;
+  --vt-color-warning:       #fbbf24; // amber-400
+  --vt-color-warning-muted: #451a03;
+  --vt-color-error:         #f87171; // red-400
+  --vt-color-error-muted:   #450a0a;
+  --vt-color-info:          #60a5fa; // blue-400
+  --vt-color-info-muted:    #1e3a5f;
+
+  // ── Cores: Rating ──────────────────────────
+  --vt-rating:              #fbbf24; // amber-400
+
+  // ── Tipografia ─────────────────────────────
+  --vt-font-sans:  'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --vt-font-mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --vt-text-xs:    0.75rem;   // 12px
+  --vt-text-sm:    0.875rem;  // 14px
+  --vt-text-base:  1rem;      // 16px
+  --vt-text-lg:    1.125rem;  // 18px
+  --vt-text-xl:    1.25rem;   // 20px
+  --vt-text-2xl:   1.5rem;    // 24px
+  --vt-text-3xl:   1.875rem;  // 30px
+  --vt-text-4xl:   2.25rem;   // 36px
+  --vt-text-5xl:   3rem;      // 48px
+  --vt-text-6xl:   3.75rem;   // 60px
+
+  // ── Border Radius ──────────────────────────
+  --vt-radius-sm:   0.25rem;  // 4px
+  --vt-radius-md:   0.5rem;   // 8px
+  --vt-radius-lg:   0.75rem;  // 12px
+  --vt-radius-xl:   1rem;     // 16px
+  --vt-radius-2xl:  1.5rem;   // 24px
+  --vt-radius-full: 9999px;
+
+  // ── Espaçamento ────────────────────────────
+  --vt-space-1:  0.25rem;  //  4px
+  --vt-space-2:  0.5rem;   //  8px
+  --vt-space-3:  0.75rem;  // 12px
+  --vt-space-4:  1rem;     // 16px
+  --vt-space-5:  1.25rem;  // 20px
+  --vt-space-6:  1.5rem;   // 24px
+  --vt-space-8:  2rem;     // 32px
+  --vt-space-10: 2.5rem;   // 40px
+  --vt-space-12: 3rem;     // 48px
+  --vt-space-16: 4rem;     // 64px
+
+  // ── Sombras ────────────────────────────────
+  --vt-shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+  --vt-shadow-md:  0 4px 8px rgba(0, 0, 0, 0.5);
+  --vt-shadow-lg:  0 10px 24px rgba(0, 0, 0, 0.6);
+
+  // ── Transições ─────────────────────────────
+  --vt-transition-fast:   150ms ease;
+  --vt-transition-base:   300ms ease;
+  --vt-transition-slow:   500ms ease;
+
+  // ── Z-index ────────────────────────────────
+  --vt-z-base:     0;
+  --vt-z-raised:   10;
+  --vt-z-overlay:  100;
+  --vt-z-modal:    200;
+  --vt-z-topbar:   300;
+  --vt-z-toast:    400;
+}
+
+// ─────────────────────────────────────────────
+// Tema Claro
+// ─────────────────────────────────────────────
+
+[data-theme="light"] {
+  // ── Cores: Background ──────────────────────
+  --vt-bg-primary:          #fafafa; // zinc-50
+  --vt-bg-surface:          #ffffff; // white
+  --vt-bg-elevated:         #f4f4f5; // zinc-100
+  --vt-bg-overlay:          rgba(0, 0, 0, 0.3);
+
+  // ── Cores: Borda ───────────────────────────
+  --vt-border:              #e4e4e7; // zinc-200
+  --vt-border-hover:        #a1a1aa; // zinc-400
+  --vt-border-focus:        #71717a; // zinc-500
+
+  // ── Cores: Texto ───────────────────────────
+  --vt-text-primary:        #09090b; // zinc-950
+  --vt-text-secondary:      #71717a; // zinc-500
+  --vt-text-muted:          #a1a1aa; // zinc-400
+  --vt-text-disabled:       #d4d4d8; // zinc-300
+
+  // ── Cores: Ação / Contraste ─────────────────
+  --vt-action-bg:           #09090b;
+  --vt-action-fg:           #ffffff;
+  --vt-action-bg-hover:     #27272a;
+
+  // ── Cores: Feedback ────────────────────────
+  --vt-color-success:       #059669; // emerald-600
+  --vt-color-success-muted: #d1fae5;
+  --vt-color-warning:       #d97706; // amber-600
+  --vt-color-warning-muted: #fef3c7;
+  --vt-color-error:         #dc2626; // red-600
+  --vt-color-error-muted:   #fee2e2;
+  --vt-color-info:          #2563eb; // blue-600
+  --vt-color-info-muted:    #dbeafe;
+
+  // ── Cores: Rating ──────────────────────────
+  --vt-rating:              #d97706; // amber-600
+
+  // ── Sombras ────────────────────────────────
+  --vt-shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.06);
+  --vt-shadow-md:  0 4px 8px rgba(0, 0, 0, 0.08);
+  --vt-shadow-lg:  0 10px 24px rgba(0, 0, 0, 0.10);
+}
