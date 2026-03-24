@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { LucideAngularModule, ShoppingCart, Star, Box } from 'lucide-angular';
+import { LucideAngularModule, ShoppingCart, Star, Shirt } from 'lucide-angular';
 import { CurrencyPipe } from '@angular/common';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { firstValueFrom } from 'rxjs';
@@ -22,7 +22,7 @@ export class App {
 
   readonly ShoppingCart = ShoppingCart;
   readonly Star = Star;
-  readonly Box = Box;
+  readonly Shirt = Shirt;
 
   private readonly productService = inject(ProductService);
   protected readonly cartStore = inject(CartStore);

@@ -1,98 +1,125 @@
-<div class="min-h-screen bg-slate-50 font-sans text-slate-900">
+<div class="min-h-screen bg-zinc-950 font-sans text-zinc-100">
   <!-- Header -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
+  <header class="bg-zinc-950 border-b border-zinc-800 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
-        <lucide-angular [img]="Box" class="w-8 h-8"></lucide-angular>
+      <h1 class="text-2xl font-black tracking-tighter text-white flex items-center gap-2 uppercase">
+        <lucide-angular [img]="Shirt" class="w-6 h-6"></lucide-angular>
         {{ title }}
       </h1>
 
-      <nav class="hidden md:flex gap-8 font-medium">
-        <a href="#" class="hover:text-blue-600 transition-colors">Products</a>
-        <a href="#" class="hover:text-blue-600 transition-colors">Categories</a>
-        <a href="#" class="hover:text-blue-600 transition-colors">Deals</a>
+      <nav class="hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase text-zinc-400">
+        <a href="#" class="hover:text-white transition-colors">Shop</a>
+        <a href="#" class="hover:text-white transition-colors">New Drops</a>
+        <a href="#" class="hover:text-white transition-colors">Lookbook</a>
       </nav>
 
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
         <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="secondary"></p-button>
-        <div class="relative">
-          <p-button [rounded]="true" severity="primary" class="relative">
-            <lucide-angular [img]="ShoppingCart" class="w-5 h-5 mr-2"></lucide-angular>
-            Cart ({{ cartStore.totalItems() }})
-          </p-button>
-        </div>
+        <p-button [rounded]="true" severity="contrast">
+          <lucide-angular [img]="ShoppingCart" class="w-4 h-4 mr-2"></lucide-angular>
+          <span class="text-sm font-bold">{{ cartStore.totalItems() }}</span>
+        </p-button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <main class="max-w-7xl mx-auto px-4 py-12">
-    <section class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-12 mb-12 text-white relative overflow-hidden">
-      <div class="relative z-10 max-w-2xl">
-        <span class="bg-white/20 px-4 py-1 rounded-full text-sm font-semibold mb-6 inline-block backdrop-blur-sm">New Collection 2026</span>
-        <h2 class="text-5xl font-extrabold mb-6 leading-tight">Elevate Your Lifestyle with Our Curated Selection</h2>
-        <p class="text-xl text-blue-50 mb-8">Discover premium products designed for modern life. Free shipping on all orders over $50.</p>
-        <div class="flex gap-4">
-          <p-button label="Shop Now" severity="info" size="large"></p-button>
-          <p-button label="View Deals" severity="secondary" size="large" [outlined]="true" class="bg-white/10"></p-button>
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <!-- Hero -->
+    <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-10 md:p-16 mb-14 relative overflow-hidden">
+      <div class="relative z-10 max-w-xl">
+        <span class="bg-white text-zinc-950 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase mb-6 inline-block">
+          Drop 01 — SS26
+        </span>
+        <h2 class="text-5xl md:text-6xl font-black leading-none tracking-tighter mb-5 uppercase">
+          Seu fit.<br />Suas regras.
+        </h2>
+        <p class="text-zinc-400 text-lg mb-8 leading-relaxed">
+          Peças construídas pra quem não segue o estilo de ninguém. Frete grátis acima de R$400.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <p-button label="Shop the Drop" severity="contrast" size="large"></p-button>
+          <p-button label="Ver Lookbook" severity="secondary" size="large" [outlined]="true"></p-button>
         </div>
       </div>
-      <div class="absolute right-0 top-0 w-1/3 h-full opacity-10 pointer-events-none">
-        <lucide-angular [img]="Box" class="w-full h-full"></lucide-angular>
+
+      <div class="absolute right-8 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none hidden lg:block">
+        <lucide-angular [img]="Shirt" class="w-72 h-72 text-white"></lucide-angular>
       </div>
     </section>
 
-    <!-- Featured Products -->
+    <!-- New Drops -->
     <section>
       <div class="flex items-center justify-between mb-8">
-        <h3 class="text-3xl font-bold">Featured Products</h3>
-        <p-button label="View All" [text]="true" icon="pi pi-arrow-right" iconPos="right"></p-button>
+        <div>
+          <h3 class="text-2xl font-black uppercase tracking-tight">New Drops</h3>
+          <p class="text-zinc-500 text-sm mt-1">Peças em destaque desta temporada</p>
+        </div>
+        <p-button label="Ver tudo" [text]="true" icon="pi pi-arrow-right" iconPos="right" severity="secondary"></p-button>
       </div>
 
       @if (featuredQuery.isPending()) {
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           @for (_ of [1, 2, 3]; track $index) {
-            <div class="rounded-xl bg-slate-200 animate-pulse h-80"></div>
+            <div class="rounded-xl bg-zinc-800 animate-pulse h-96"></div>
           }
         </div>
       }
 
       @if (featuredQuery.isError()) {
-        <p class="text-red-500">Failed to load products. Please try again.</p>
+        <p class="text-red-400">Erro ao carregar produtos. Tente novamente.</p>
       }
 
       @if (featuredQuery.isSuccess()) {
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           @for (product of featuredQuery.data(); track product.id) {
-            <p-card class="hover:shadow-xl transition-shadow border-none">
-              <ng-template pTemplate="header">
-                <div class="aspect-square bg-slate-200 rounded-t-xl overflow-hidden">
-                  <img [src]="product.thumbnail" [alt]="product.name" class="w-full h-full object-cover" />
-                </div>
-              </ng-template>
-              <div class="flex flex-col gap-2">
-                <span class="text-xs font-medium text-blue-500 uppercase tracking-wide">{{ product.categoryName }}</span>
-                <div class="flex justify-between items-start gap-2">
-                  <h4 class="text-lg font-bold leading-tight">{{ product.name }}</h4>
-                  <span class="text-lg font-semibold text-blue-600 whitespace-nowrap">{{ product.price | currency }}</span>
-                </div>
-                <div class="flex items-center gap-1 text-yellow-500">
-                  <lucide-angular [img]="Star" class="w-4 h-4 fill-current"></lucide-angular>
-                  <span class="text-slate-600 font-medium">{{ product.rating }}</span>
-                  <span class="text-slate-400 text-sm">({{ product.reviewCount }})</span>
-                </div>
-                <p-button label="Add to Cart" [outlined]="true" class="mt-4 w-full"></p-button>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-600 transition-colors group">
+              <div class="aspect-square overflow-hidden relative">
+                <img
+                  [src]="product.thumbnail"
+                  [alt]="product.name"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                @if (product.discountPercentage) {
+                  <span class="absolute top-3 left-3 bg-white text-zinc-950 text-xs font-black px-2 py-1 rounded">
+                    -{{ product.discountPercentage }}%
+                  </span>
+                }
               </div>
-            </p-card>
+
+              <div class="p-5 flex flex-col gap-3">
+                <span class="text-xs font-semibold tracking-widest uppercase text-zinc-500">
+                  {{ product.categoryName }}
+                </span>
+
+                <div class="flex justify-between items-start gap-2">
+                  <h4 class="font-bold text-base leading-tight text-zinc-100">{{ product.name }}</h4>
+                  <div class="text-right shrink-0">
+                    @if (product.originalPrice) {
+                      <span class="block text-xs text-zinc-600 line-through">{{ product.originalPrice | currency:'BRL':'symbol':'1.2-2' }}</span>
+                    }
+                    <span class="font-black text-white">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-1 text-amber-400">
+                  <lucide-angular [img]="Star" class="w-3.5 h-3.5 fill-current"></lucide-angular>
+                  <span class="text-sm font-semibold text-zinc-300">{{ product.rating }}</span>
+                  <span class="text-zinc-600 text-xs">({{ product.reviewCount }})</span>
+                </div>
+
+                <p-button label="Adicionar ao Carrinho" severity="contrast" styleClass="w-full mt-1"></p-button>
+              </div>
+            </div>
           }
         </div>
       }
     </section>
   </main>
 
-  <footer class="bg-white border-t mt-24 py-12">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-slate-500">© 2026 {{ title }} - Built with Angular 21, Tailwind CSS & PrimeNG</p>
+  <footer class="border-t border-zinc-800 mt-24 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-zinc-600 text-sm">
+      <span class="font-black text-zinc-400 uppercase tracking-widest">{{ title }}</span>
+      <span>© 2026 — streetwear & fashion</span>
     </div>
   </footer>
 </div>
