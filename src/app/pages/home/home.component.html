@@ -1,52 +1,38 @@
 <main class="home-page">
-  <section class="hero">
-    <div class="hero__content">
-      <span class="hero__badge">Drop 01 — SS26</span>
-      <h2 class="hero__title">Seu fit.<br />Suas regras.</h2>
-      <p class="hero__subtitle">
-        Peças construídas pra quem não segue o estilo de ninguém. Frete grátis acima de R$400.
-      </p>
-      <div class="hero__actions">
-        <p-button label="Shop the Drop" severity="contrast" size="large"></p-button>
-        <p-button label="Ver Lookbook" severity="secondary" size="large" [outlined]="true"></p-button>
+  <app-hero [slides]="heroSlides" />
+
+  <div class="home-page__content">
+    <section class="drops">
+      <div class="drops__header">
+        <div class="drops__header-info">
+          <h3 class="drops__title">New Drops</h3>
+          <p class="drops__subtitle">Peças em destaque desta temporada</p>
+        </div>
+        <p-button label="Ver tudo" [text]="true" icon="pi pi-arrow-right" iconPos="right" severity="secondary"></p-button>
       </div>
-    </div>
 
-    <div class="hero__decoration">
-      <lucide-angular [img]="Shirt" class="hero__decoration-icon"></lucide-angular>
-    </div>
-  </section>
+      @if (featuredQuery.isPending()) {
+        <div class="drops__skeleton-grid">
+          @for (_ of [1, 2, 3]; track $index) {
+            <div class="drops__skeleton-item"></div>
+          }
+        </div>
+      }
 
-  <section class="drops">
-    <div class="drops__header">
-      <div class="drops__header-info">
-        <h3 class="drops__title">New Drops</h3>
-        <p class="drops__subtitle">Peças em destaque desta temporada</p>
-      </div>
-      <p-button label="Ver tudo" [text]="true" icon="pi pi-arrow-right" iconPos="right" severity="secondary"></p-button>
-    </div>
+      @if (featuredQuery.isError()) {
+        <p class="drops__error">Erro ao carregar produtos. Tente novamente.</p>
+      }
 
-    @if (featuredQuery.isPending()) {
-      <div class="drops__skeleton-grid">
-        @for (_ of [1, 2, 3]; track $index) {
-          <div class="drops__skeleton-item"></div>
-        }
-      </div>
-    }
-
-    @if (featuredQuery.isError()) {
-      <p class="drops__error">Erro ao carregar produtos. Tente novamente.</p>
-    }
-
-    @if (featuredQuery.isSuccess()) {
-      <div class="drops__grid">
-        @for (product of featuredQuery.data(); track product.id) {
-          <app-product-card
-            [product]="product"
-            (addToCart)="onAddToCart($event)"
-          />
-        }
-      </div>
-    }
-  </section>
+      @if (featuredQuery.isSuccess()) {
+        <div class="drops__grid">
+          @for (product of featuredQuery.data(); track product.id) {
+            <app-product-card
+              [product]="product"
+              (addToCart)="onAddToCart($event)"
+            />
+          }
+        </div>
+      }
+    </section>
+  </div>
 </main>

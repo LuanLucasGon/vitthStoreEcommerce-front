@@ -1,49 +1,9 @@
 .home-page {
-  @apply max-w-7xl mx-auto px-4 py-10;
+  @apply w-full;
 }
 
-.hero {
-  @apply bg-zinc-900 border border-zinc-800 rounded-2xl p-10 mb-14 relative overflow-hidden;
-
-  @screen md {
-    @apply p-16;
-  }
-
-  &__content {
-    @apply relative z-10 max-w-xl;
-  }
-
-  &__badge {
-    @apply bg-white text-zinc-950 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase mb-6 inline-block;
-  }
-
-  &__title {
-    @apply text-5xl font-black leading-none tracking-tighter mb-5 uppercase;
-
-    @screen md {
-      @apply text-6xl;
-    }
-  }
-
-  &__subtitle {
-    @apply text-zinc-400 text-lg mb-8 leading-relaxed;
-  }
-
-  &__actions {
-    @apply flex flex-wrap gap-3;
-  }
-
-  &__decoration {
-    @apply absolute right-8 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none hidden;
-
-    @screen lg {
-      @apply block;
-    }
-  }
-
-  &__decoration-icon {
-    @apply w-72 h-72 text-white;
-  }
+.home-page__content {
+  @apply max-w-7xl mx-auto px-4 py-12;
 }
 
 .drops {

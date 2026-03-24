@@ -1,0 +1,56 @@
+<section class="hero">
+
+  @for (slide of slides(); track $index) {
+    <div class="hero__slide" [class.hero__slide--active]="currentIndex() === $index">
+      <img [src]="slide.imageUrl" [alt]="slide.title" class="hero__image" />
+    </div>
+  }
+
+  <div class="hero__content-wrapper">
+    <div class="hero__content">
+      @if (activeSlide().badge) {
+        <span class="hero__badge">{{ activeSlide().badge }}</span>
+      }
+      <h2 class="hero__title">{{ activeSlide().title }}</h2>
+      <p class="hero__subtitle">{{ activeSlide().subtitle }}</p>
+      <div class="hero__actions">
+        <p-button
+          [label]="activeSlide().primaryCta.label"
+          severity="contrast"
+          size="large"
+          [routerLink]="activeSlide().primaryCta.route"
+        ></p-button>
+        @if (activeSlide().secondaryCta) {
+          <p-button
+            [label]="activeSlide().secondaryCta!.label"
+            severity="secondary"
+            size="large"
+            [outlined]="true"
+            [routerLink]="activeSlide().secondaryCta!.route"
+          ></p-button>
+        }
+      </div>
+    </div>
+  </div>
+
+  @if (slides().length > 1) {
+    <button class="hero__arrow hero__arrow--prev" (click)="prev()" aria-label="Slide anterior">
+      <lucide-angular [img]="ChevronLeft" class="hero__arrow-icon"></lucide-angular>
+    </button>
+    <button class="hero__arrow hero__arrow--next" (click)="next()" aria-label="Próximo slide">
+      <lucide-angular [img]="ChevronRight" class="hero__arrow-icon"></lucide-angular>
+    </button>
+
+    <div class="hero__dots">
+      @for (slide of slides(); track $index) {
+        <button
+          class="hero__dot"
+          [class.hero__dot--active]="currentIndex() === $index"
+          (click)="goTo($index)"
+          [attr.aria-label]="'Ir para slide ' + ($index + 1)"
+        ></button>
+      }
+    </div>
+  }
+
+</section>
