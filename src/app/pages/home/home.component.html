@@ -41,36 +41,10 @@
     @if (featuredQuery.isSuccess()) {
       <div class="drops__grid">
         @for (product of featuredQuery.data(); track product.id) {
-          <div class="product-card">
-            <div class="product-card__image-wrapper">
-              <img [src]="product.thumbnail" [alt]="product.name" class="product-card__image" />
-              @if (product.discountPercentage) {
-                <span class="product-card__discount-badge">-{{ product.discountPercentage }}%</span>
-              }
-            </div>
-
-            <div class="product-card__body">
-              <span class="product-card__category">{{ product.categoryName }}</span>
-
-              <div class="product-card__info">
-                <h4 class="product-card__name">{{ product.name }}</h4>
-                <div class="product-card__pricing">
-                  @if (product.originalPrice) {
-                    <span class="product-card__original-price">{{ product.originalPrice | currency:'BRL':'symbol':'1.2-2' }}</span>
-                  }
-                  <span class="product-card__price">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</span>
-                </div>
-              </div>
-
-              <div class="product-card__rating">
-                <lucide-angular [img]="Star" class="product-card__rating-icon"></lucide-angular>
-                <span class="product-card__rating-value">{{ product.rating }}</span>
-                <span class="product-card__rating-count">({{ product.reviewCount }})</span>
-              </div>
-
-              <p-button label="Adicionar ao Carrinho" severity="contrast" styleClass="w-full mt-1"></p-button>
-            </div>
-          </div>
+          <app-product-card
+            [product]="product"
+            (addToCart)="onAddToCart($event)"
+          />
         }
       </div>
     }
