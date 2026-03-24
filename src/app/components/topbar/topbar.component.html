@@ -1,5 +1,6 @@
 <header class="topbar">
   <div class="topbar__inner">
+
     <h1 class="topbar__brand">
       <lucide-angular [img]="Shirt" class="topbar__brand-icon"></lucide-angular>
       VitthStore
@@ -11,12 +12,29 @@
       <a href="#" class="topbar__nav-link">Lookbook</a>
     </nav>
 
-    <div class="topbar__actions">
-      <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="secondary"></p-button>
-      <p-button [rounded]="true" severity="contrast">
-        <lucide-angular [img]="ShoppingCart" class="topbar__cart-icon"></lucide-angular>
-        <span class="topbar__cart-count">{{ cartStore.totalItems() }}</span>
-      </p-button>
+    <div class="topbar__search">
+      <lucide-angular [img]="Search" class="topbar__search-icon"></lucide-angular>
+      <input
+        type="text"
+        class="topbar__search-input"
+        placeholder="Buscar peças..."
+        [value]="searchQuery()"
+        (input)="searchQuery.set($any($event.target).value)"
+      />
     </div>
+
+    <div class="topbar__actions">
+      <button class="topbar__action-btn" aria-label="Entrar na conta">
+        <lucide-angular [img]="User" class="topbar__action-icon"></lucide-angular>
+      </button>
+
+      <button class="topbar__action-btn topbar__action-btn--cart" aria-label="Ver carrinho">
+        <lucide-angular [img]="ShoppingCart" class="topbar__action-icon"></lucide-angular>
+        @if (cartStore.totalItems() > 0) {
+          <span class="topbar__cart-badge">{{ cartStore.totalItems() }}</span>
+        }
+      </button>
+    </div>
+
   </div>
 </header>

@@ -2,34 +2,126 @@
   @apply bg-zinc-950 border-b border-zinc-800 sticky top-0 z-50;
 
   &__inner {
-    @apply max-w-7xl mx-auto px-4 h-16 flex items-center justify-between;
+    @apply max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4;
   }
 
+  // ── Brand ───────────────────────────────────
+
   &__brand {
-    @apply text-2xl font-black tracking-tighter text-white flex items-center gap-2 uppercase;
+    @apply text-xl font-black tracking-tighter text-white flex items-center gap-2 uppercase shrink-0;
   }
 
   &__brand-icon {
-    @apply w-6 h-6;
+    @apply w-5 h-5;
   }
 
+  // ── Nav ─────────────────────────────────────
+
   &__nav {
-    @apply hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase text-zinc-400;
+    @apply hidden lg:flex gap-8 text-sm font-semibold tracking-widest uppercase text-zinc-400;
   }
 
   &__nav-link {
     @apply hover:text-white transition-colors;
   }
 
+  // ── Search ──────────────────────────────────
+
+  &__search {
+    @apply hidden md:flex items-center gap-2 flex-1 max-w-xs;
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    border-radius: var(--vt-radius-full);
+    padding: 0.375rem 0.875rem;
+    transition: border-color var(--vt-transition-fast);
+
+    &:focus-within {
+      border-color: #71717a;
+    }
+  }
+
+  &__search-icon {
+    width: 0.85rem;
+    height: 0.85rem;
+    color: #71717a;
+    flex-shrink: 0;
+  }
+
+  &__search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fafafa;
+    font-size: var(--vt-text-sm);
+    width: 100%;
+
+    &::placeholder {
+      color: #52525b;
+    }
+  }
+
+  // ── Actions ─────────────────────────────────
+
   &__actions {
-    @apply flex items-center gap-3;
+    @apply flex items-center gap-3 shrink-0;
   }
 
-  &__cart-icon {
-    @apply w-4 h-4 mr-2;
+  &__action-btn {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid #3f3f46;
+    background: transparent;
+    color: #fafafa;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background var(--vt-transition-fast), border-color var(--vt-transition-fast);
+
+    &:hover {
+      background: #27272a;
+      border-color: #52525b;
+    }
+
+    &--cart {
+      background: #fafafa;
+      border-color: #fafafa;
+      color: #09090b;
+
+      &:hover {
+        background: #e4e4e7;
+        border-color: #e4e4e7;
+      }
+    }
   }
 
-  &__cart-count {
-    @apply text-sm font-bold;
+  &__action-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -0.3rem;
+    right: -0.3rem;
+    min-width: 1.1rem;
+    height: 1.1rem;
+    padding: 0 0.2rem;
+    border-radius: 9999px;
+    background: #09090b;
+    color: #fafafa;
+    font-size: 0.6rem;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fafafa;
+    pointer-events: none;
   }
 }
