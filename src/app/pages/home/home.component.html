@@ -1,0 +1,78 @@
+<main class="home-page">
+  <section class="hero">
+    <div class="hero__content">
+      <span class="hero__badge">Drop 01 — SS26</span>
+      <h2 class="hero__title">Seu fit.<br />Suas regras.</h2>
+      <p class="hero__subtitle">
+        Peças construídas pra quem não segue o estilo de ninguém. Frete grátis acima de R$400.
+      </p>
+      <div class="hero__actions">
+        <p-button label="Shop the Drop" severity="contrast" size="large"></p-button>
+        <p-button label="Ver Lookbook" severity="secondary" size="large" [outlined]="true"></p-button>
+      </div>
+    </div>
+
+    <div class="hero__decoration">
+      <lucide-angular [img]="Shirt" class="hero__decoration-icon"></lucide-angular>
+    </div>
+  </section>
+
+  <section class="drops">
+    <div class="drops__header">
+      <div class="drops__header-info">
+        <h3 class="drops__title">New Drops</h3>
+        <p class="drops__subtitle">Peças em destaque desta temporada</p>
+      </div>
+      <p-button label="Ver tudo" [text]="true" icon="pi pi-arrow-right" iconPos="right" severity="secondary"></p-button>
+    </div>
+
+    @if (featuredQuery.isPending()) {
+      <div class="drops__skeleton-grid">
+        @for (_ of [1, 2, 3]; track $index) {
+          <div class="drops__skeleton-item"></div>
+        }
+      </div>
+    }
+
+    @if (featuredQuery.isError()) {
+      <p class="drops__error">Erro ao carregar produtos. Tente novamente.</p>
+    }
+
+    @if (featuredQuery.isSuccess()) {
+      <div class="drops__grid">
+        @for (product of featuredQuery.data(); track product.id) {
+          <div class="product-card">
+            <div class="product-card__image-wrapper">
+              <img [src]="product.thumbnail" [alt]="product.name" class="product-card__image" />
+              @if (product.discountPercentage) {
+                <span class="product-card__discount-badge">-{{ product.discountPercentage }}%</span>
+              }
+            </div>
+
+            <div class="product-card__body">
+              <span class="product-card__category">{{ product.categoryName }}</span>
+
+              <div class="product-card__info">
+                <h4 class="product-card__name">{{ product.name }}</h4>
+                <div class="product-card__pricing">
+                  @if (product.originalPrice) {
+                    <span class="product-card__original-price">{{ product.originalPrice | currency:'BRL':'symbol':'1.2-2' }}</span>
+                  }
+                  <span class="product-card__price">{{ product.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+                </div>
+              </div>
+
+              <div class="product-card__rating">
+                <lucide-angular [img]="Star" class="product-card__rating-icon"></lucide-angular>
+                <span class="product-card__rating-value">{{ product.rating }}</span>
+                <span class="product-card__rating-count">({{ product.reviewCount }})</span>
+              </div>
+
+              <p-button label="Adicionar ao Carrinho" severity="contrast" styleClass="w-full mt-1"></p-button>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </section>
+</main>

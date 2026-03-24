@@ -1,0 +1,165 @@
+.home-page {
+  @apply max-w-7xl mx-auto px-4 py-10;
+}
+
+.hero {
+  @apply bg-zinc-900 border border-zinc-800 rounded-2xl p-10 mb-14 relative overflow-hidden;
+
+  @screen md {
+    @apply p-16;
+  }
+
+  &__content {
+    @apply relative z-10 max-w-xl;
+  }
+
+  &__badge {
+    @apply bg-white text-zinc-950 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase mb-6 inline-block;
+  }
+
+  &__title {
+    @apply text-5xl font-black leading-none tracking-tighter mb-5 uppercase;
+
+    @screen md {
+      @apply text-6xl;
+    }
+  }
+
+  &__subtitle {
+    @apply text-zinc-400 text-lg mb-8 leading-relaxed;
+  }
+
+  &__actions {
+    @apply flex flex-wrap gap-3;
+  }
+
+  &__decoration {
+    @apply absolute right-8 top-1/2 -translate-y-1/2 opacity-5 pointer-events-none hidden;
+
+    @screen lg {
+      @apply block;
+    }
+  }
+
+  &__decoration-icon {
+    @apply w-72 h-72 text-white;
+  }
+}
+
+.drops {
+  &__header {
+    @apply flex items-center justify-between mb-8;
+  }
+
+  &__header-info {
+    @apply flex flex-col;
+  }
+
+  &__title {
+    @apply text-2xl font-black uppercase tracking-tight;
+  }
+
+  &__subtitle {
+    @apply text-zinc-500 text-sm mt-1;
+  }
+
+  &__skeleton-grid {
+    @apply grid grid-cols-1 gap-6;
+
+    @screen md {
+      @apply grid-cols-2;
+    }
+
+    @screen lg {
+      @apply grid-cols-3;
+    }
+  }
+
+  &__skeleton-item {
+    @apply rounded-xl bg-zinc-800 animate-pulse h-96;
+  }
+
+  &__error {
+    @apply text-red-400;
+  }
+
+  &__grid {
+    @apply grid grid-cols-1 gap-6;
+
+    @screen md {
+      @apply grid-cols-2;
+    }
+
+    @screen lg {
+      @apply grid-cols-3;
+    }
+  }
+}
+
+.product-card {
+  @apply bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden transition-colors;
+
+  &:hover {
+    @apply border-zinc-600;
+
+    .product-card__image {
+      @apply scale-105;
+    }
+  }
+
+  &__image-wrapper {
+    @apply aspect-square overflow-hidden relative;
+  }
+
+  &__image {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  &__discount-badge {
+    @apply absolute top-3 left-3 bg-white text-zinc-950 text-xs font-black px-2 py-1 rounded;
+  }
+
+  &__body {
+    @apply p-5 flex flex-col gap-3;
+  }
+
+  &__category {
+    @apply text-xs font-semibold tracking-widest uppercase text-zinc-500;
+  }
+
+  &__info {
+    @apply flex justify-between items-start gap-2;
+  }
+
+  &__name {
+    @apply font-bold text-base leading-tight text-zinc-100;
+  }
+
+  &__pricing {
+    @apply text-right shrink-0;
+  }
+
+  &__original-price {
+    @apply block text-xs text-zinc-600 line-through;
+  }
+
+  &__price {
+    @apply font-black text-white;
+  }
+
+  &__rating {
+    @apply flex items-center gap-1 text-amber-400;
+  }
+
+  &__rating-icon {
+    @apply w-3.5 h-3.5 fill-current;
+  }
+
+  &__rating-value {
+    @apply text-sm font-semibold text-zinc-300;
+  }
+
+  &__rating-count {
+    @apply text-zinc-600 text-xs;
+  }
+}

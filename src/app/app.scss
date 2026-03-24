@@ -1,0 +1,51 @@
+.app-shell {
+  @apply min-h-screen bg-zinc-950 font-sans text-zinc-100;
+}
+
+.app-header {
+  @apply bg-zinc-950 border-b border-zinc-800 sticky top-0 z-50;
+
+  &__inner {
+    @apply max-w-7xl mx-auto px-4 h-16 flex items-center justify-between;
+  }
+
+  &__brand {
+    @apply text-2xl font-black tracking-tighter text-white flex items-center gap-2 uppercase;
+  }
+
+  &__brand-icon {
+    @apply w-6 h-6;
+  }
+
+  &__nav {
+    @apply hidden md:flex gap-8 text-sm font-semibold tracking-widest uppercase text-zinc-400;
+  }
+
+  &__nav-link {
+    @apply hover:text-white transition-colors;
+  }
+
+  &__actions {
+    @apply flex items-center gap-3;
+  }
+
+  &__cart-icon {
+    @apply w-4 h-4 mr-2;
+  }
+
+  &__cart-count {
+    @apply text-sm font-bold;
+  }
+}
+
+.app-footer {
+  @apply border-t border-zinc-800 mt-24 py-10;
+
+  &__inner {
+    @apply max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-zinc-600 text-sm;
+  }
+
+  &__brand {
+    @apply font-black text-zinc-400 uppercase tracking-widest;
+  }
+}
