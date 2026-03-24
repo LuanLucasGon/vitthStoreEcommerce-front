@@ -1,0 +1,96 @@
+import { Order } from '../../core/models/order.model';
+
+export const ORDERS_FIXTURE: Order[] = [
+  {
+    id: 'ord-1',
+    userId: 'user-1',
+    items: [
+      {
+        productId: 'prod-1',
+        productName: 'Wireless Noise-Cancelling Headphones',
+        thumbnail: 'https://placehold.co/400x400?text=Headphones',
+        price: 199.99,
+        quantity: 1,
+      },
+      {
+        productId: 'prod-10',
+        productName: 'Single-Origin Coffee Beans 500g',
+        thumbnail: 'https://placehold.co/400x400?text=Coffee+Beans',
+        price: 29.90,
+        quantity: 2,
+      },
+    ],
+    status: 'delivered',
+    subtotal: 259.79,
+    shipping: 0,
+    total: 259.79,
+    shippingAddress: {
+      street: '123 Main St',
+      city: 'San Francisco',
+      state: 'CA',
+      zipCode: '94105',
+      country: 'US',
+    },
+    createdAt: '2026-01-15T10:30:00Z',
+    updatedAt: '2026-01-18T14:00:00Z',
+  },
+  {
+    id: 'ord-2',
+    userId: 'user-1',
+    items: [
+      {
+        productId: 'prod-8',
+        productName: 'Smart LED Desk Lamp',
+        thumbnail: 'https://placehold.co/400x400?text=Desk+Lamp',
+        price: 59.99,
+        quantity: 1,
+      },
+    ],
+    status: 'shipped',
+    subtotal: 59.99,
+    shipping: 5.99,
+    total: 65.98,
+    shippingAddress: {
+      street: '456 Oak Ave',
+      city: 'Portland',
+      state: 'OR',
+      zipCode: '97201',
+      country: 'US',
+    },
+    createdAt: '2026-02-20T08:00:00Z',
+    updatedAt: '2026-02-22T09:00:00Z',
+  },
+  {
+    id: 'ord-3',
+    userId: 'user-1',
+    items: [
+      {
+        productId: 'prod-5',
+        productName: 'Premium Wool Blend Jacket',
+        thumbnail: 'https://placehold.co/400x400?text=Jacket',
+        price: 189.00,
+        quantity: 1,
+      },
+      {
+        productId: 'prod-6',
+        productName: 'Minimalist Canvas Sneakers',
+        thumbnail: 'https://placehold.co/400x400?text=Sneakers',
+        price: 75.00,
+        quantity: 1,
+      },
+    ],
+    status: 'pending',
+    subtotal: 264.00,
+    shipping: 0,
+    total: 264.00,
+    shippingAddress: {
+      street: '789 Pine Rd',
+      city: 'Seattle',
+      state: 'WA',
+      zipCode: '98101',
+      country: 'US',
+    },
+    createdAt: '2026-03-20T16:45:00Z',
+    updatedAt: '2026-03-20T16:45:00Z',
+  },
+];

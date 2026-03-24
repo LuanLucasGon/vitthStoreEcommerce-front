@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
       <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
         <lucide-angular [img]="Box" class="w-8 h-8"></lucide-angular>
-        {{ title() }}
+        {{ title }}
       </h1>
 
       <nav class="hidden md:flex gap-8 font-medium">
@@ -18,7 +18,7 @@
         <div class="relative">
           <p-button [rounded]="true" severity="primary" class="relative">
             <lucide-angular [img]="ShoppingCart" class="w-5 h-5 mr-2"></lucide-angular>
-            Cart (0)
+            Cart ({{ cartStore.totalItems() }})
           </p-button>
         </div>
       </div>
@@ -49,34 +49,50 @@
         <p-button label="View All" [text]="true" icon="pi pi-arrow-right" iconPos="right"></p-button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        @for (product of featuredProducts(); track product.id) {
-          <p-card class="hover:shadow-xl transition-shadow border-none">
-            <ng-template pTemplate="header">
-              <div class="aspect-square bg-slate-200 rounded-t-xl flex items-center justify-center">
-                 <lucide-angular [img]="Box" class="w-24 h-24 text-slate-400"></lucide-angular>
+      @if (featuredQuery.isPending()) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (_ of [1, 2, 3]; track $index) {
+            <div class="rounded-xl bg-slate-200 animate-pulse h-80"></div>
+          }
+        </div>
+      }
+
+      @if (featuredQuery.isError()) {
+        <p class="text-red-500">Failed to load products. Please try again.</p>
+      }
+
+      @if (featuredQuery.isSuccess()) {
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (product of featuredQuery.data(); track product.id) {
+            <p-card class="hover:shadow-xl transition-shadow border-none">
+              <ng-template pTemplate="header">
+                <div class="aspect-square bg-slate-200 rounded-t-xl overflow-hidden">
+                  <img [src]="product.thumbnail" [alt]="product.name" class="w-full h-full object-cover" />
+                </div>
+              </ng-template>
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-medium text-blue-500 uppercase tracking-wide">{{ product.categoryName }}</span>
+                <div class="flex justify-between items-start gap-2">
+                  <h4 class="text-lg font-bold leading-tight">{{ product.name }}</h4>
+                  <span class="text-lg font-semibold text-blue-600 whitespace-nowrap">{{ product.price | currency }}</span>
+                </div>
+                <div class="flex items-center gap-1 text-yellow-500">
+                  <lucide-angular [img]="Star" class="w-4 h-4 fill-current"></lucide-angular>
+                  <span class="text-slate-600 font-medium">{{ product.rating }}</span>
+                  <span class="text-slate-400 text-sm">({{ product.reviewCount }})</span>
+                </div>
+                <p-button label="Add to Cart" [outlined]="true" class="mt-4 w-full"></p-button>
               </div>
-            </ng-template>
-            <div class="flex flex-col gap-2">
-              <div class="flex justify-between items-center">
-                <h4 class="text-xl font-bold">{{ product.name }}</h4>
-                <span class="text-lg font-semibold text-blue-600">{{ product.price | currency }}</span>
-              </div>
-              <div class="flex items-center gap-1 text-yellow-500">
-                <lucide-angular [img]="Star" class="w-4 h-4 fill-current"></lucide-angular>
-                <span class="text-slate-600 font-medium">{{ product.rating }}</span>
-              </div>
-              <p-button label="Add to Cart" [outlined]="true" class="mt-4 w-full"></p-button>
-            </div>
-          </p-card>
-        }
-      </div>
+            </p-card>
+          }
+        </div>
+      }
     </section>
   </main>
 
   <footer class="bg-white border-t mt-24 py-12">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-slate-500">© 2026 {{ title() }} - Built with Angular 19, Tailwind CSS & PrimeNG</p>
+      <p class="text-slate-500">© 2026 {{ title }} - Built with Angular 21, Tailwind CSS & PrimeNG</p>
     </div>
   </footer>
 </div>

@@ -6,6 +6,7 @@ import Aura from '@primeuix/themes/aura';
 import { provideAngularQuery, QueryClient } from '@tanstack/angular-query-experimental';
 
 import { routes } from './app.routes';
+import { mockProviders } from './data/providers/mock.providers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +20,7 @@ export const appConfig: ApplicationConfig = {
         }
       }
     }),
-    provideAngularQuery(new QueryClient())
+    provideAngularQuery(new QueryClient()),
+    ...mockProviders,
   ]
 };

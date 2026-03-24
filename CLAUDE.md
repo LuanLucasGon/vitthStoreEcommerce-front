@@ -1,0 +1,11 @@
+# CLAUDE.md
+- Sempre utilize Clean Code
+- Sempre utilize SOLID
+- Nunca crie comentários no código
+- Não altere assinatura de métodos que não têm a ver com a mudança pedida
+- Sempre utilize nomes de variáveis, métodos e classes em inglês
+- Sempre siga a arquitetura de projeto definida
+- Sempre utilize soluções inovadoras
+- Não gere códigos com problemas de N+1
+- Não gere códigos sem otimizações
+- Utilize os métodos e classes mais atualizados, como map, forEach, da versão da linguagem
