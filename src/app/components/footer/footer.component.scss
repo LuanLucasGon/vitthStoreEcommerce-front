@@ -1,0 +1,15 @@
+.footer {
+  @apply border-t border-zinc-800 mt-24 py-10;
+
+  &__inner {
+    @apply max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-zinc-600 text-sm;
+  }
+
+  &__brand {
+    @apply font-black text-zinc-400 uppercase tracking-widest;
+  }
+
+  &__copy {
+    @apply text-zinc-600;
+  }
+}
