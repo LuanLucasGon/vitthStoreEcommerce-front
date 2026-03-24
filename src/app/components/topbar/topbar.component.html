@@ -1,0 +1,22 @@
+<header class="topbar">
+  <div class="topbar__inner">
+    <h1 class="topbar__brand">
+      <lucide-angular [img]="Shirt" class="topbar__brand-icon"></lucide-angular>
+      VitthStore
+    </h1>
+
+    <nav class="topbar__nav">
+      <a href="#" class="topbar__nav-link">Shop</a>
+      <a href="#" class="topbar__nav-link">New Drops</a>
+      <a href="#" class="topbar__nav-link">Lookbook</a>
+    </nav>
+
+    <div class="topbar__actions">
+      <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="secondary"></p-button>
+      <p-button [rounded]="true" severity="contrast">
+        <lucide-angular [img]="ShoppingCart" class="topbar__cart-icon"></lucide-angular>
+        <span class="topbar__cart-count">{{ cartStore.totalItems() }}</span>
+      </p-button>
+    </div>
+  </div>
+</header>

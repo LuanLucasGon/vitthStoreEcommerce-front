@@ -1,22 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { LucideAngularModule, ShoppingCart, Shirt } from 'lucide-angular';
 
-import { CartStore } from './state/cart.store';
+import { TopbarComponent } from './components/topbar/topbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule, LucideAngularModule],
+  imports: [RouterOutlet, TopbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = 'VitthStore';
-
-  readonly ShoppingCart = ShoppingCart;
-  readonly Shirt = Shirt;
-
-  protected readonly cartStore = inject(CartStore);
-}
+export class App {}

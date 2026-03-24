@@ -1,32 +1,11 @@
 <div class="app-shell">
-  <header class="app-header">
-    <div class="app-header__inner">
-      <h1 class="app-header__brand">
-        <lucide-angular [img]="Shirt" class="app-header__brand-icon"></lucide-angular>
-        {{ title }}
-      </h1>
-
-      <nav class="app-header__nav">
-        <a href="#" class="app-header__nav-link">Shop</a>
-        <a href="#" class="app-header__nav-link">New Drops</a>
-        <a href="#" class="app-header__nav-link">Lookbook</a>
-      </nav>
-
-      <div class="app-header__actions">
-        <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="secondary"></p-button>
-        <p-button [rounded]="true" severity="contrast">
-          <lucide-angular [img]="ShoppingCart" class="app-header__cart-icon"></lucide-angular>
-          <span class="app-header__cart-count">{{ cartStore.totalItems() }}</span>
-        </p-button>
-      </div>
-    </div>
-  </header>
+  <app-topbar />
 
   <router-outlet />
 
   <footer class="app-footer">
     <div class="app-footer__inner">
-      <span class="app-footer__brand">{{ title }}</span>
+      <span class="app-footer__brand">VitthStore</span>
       <span>© 2026 — streetwear & fashion</span>
     </div>
   </footer>
